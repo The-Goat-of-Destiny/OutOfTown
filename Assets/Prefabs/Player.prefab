@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &668650091175494632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7687410159264560052}
+  m_Layer: 0
+  m_Name: CeilingCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7687410159264560052
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668650091175494632}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.95, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 3651000459262469367}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1663947299646313296
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,6 +42,7 @@ GameObject:
   - component: {fileID: 3651000459262469367}
   - component: {fileID: 4689564014847375168}
   - component: {fileID: 7741813930469357565}
+  - component: {fileID: 6948075980531549364}
   - component: {fileID: 6845298627395975460}
   - component: {fileID: 6794880574180051803}
   m_Layer: 0
@@ -34,6 +66,8 @@ Transform:
   m_Children:
   - {fileID: 5899795044695587622}
   - {fileID: 7483745884970823284}
+  - {fileID: 1311642649041400654}
+  - {fileID: 7687410159264560052}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -49,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 133917886
+  GlobalObjectIdHash: 888911698
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -70,11 +104,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f85360feafb7f7b41a19831ede9ddbab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
+  Movement: {fileID: 6948075980531549364}
   Meshes:
   - {fileID: 711764777331739743}
   - {fileID: 3798919692697313976}
+--- !u!114 &6948075980531549364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663947299646313296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace0f492187be604cb66bbd05695f312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 10
   Controller: {fileID: 6845298627395975460}
+  GroundCheck: {fileID: 1311642649041400654}
+  CeilingCheck: {fileID: 7687410159264560052}
+  Ground:
+    serializedVersion: 2
+    m_Bits: 8
+  CoyoteTime: 0.2
+  Gravity: 27
+  JumpSpeed: 12
 --- !u!143 &6845298627395975460
 CharacterController:
   m_ObjectHideFlags: 0
@@ -85,7 +140,7 @@ CharacterController:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -404,3 +459,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a02e89ed3693c9d488d2f439a5f848d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6398577434968654885
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1311642649041400654}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1311642649041400654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6398577434968654885}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.95, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 3651000459262469367}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

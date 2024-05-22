@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerNetwork : NetworkBehaviour
 {
-    public float Speed = 10f;
+    public PlayerMovement Movement;
 
     public List<MeshRenderer> Meshes = new();
 
@@ -18,11 +18,14 @@ public class PlayerNetwork : NetworkBehaviour
                 mesh.enabled = false;
             }
         }
+        else
+        {
+            Destroy(Movement);
+        }
     }
 
     //private NetworkVariable<int> randomNumber = new(1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
-    public CharacterController Controller;
 
     /*public override void OnNetworkSpawn()
     {
@@ -35,17 +38,17 @@ public class PlayerNetwork : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
         if (!IsOwner) return;
+
+        if (Input.GetButtonDown("Cancel"))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
 
         /*if (Input.GetKeyDown(KeyCode.T))
         {
             randomNumber.Value = Random.Range(0, 100);
         }*/
-        Vector3 moveAxis = transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal");
-        moveAxis.Normalize();
-
-        Controller.Move(Speed * Time.deltaTime * moveAxis);
     }
 }
