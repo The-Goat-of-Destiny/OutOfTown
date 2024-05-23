@@ -16,12 +16,17 @@ public class NetworkManagerUI : MonoBehaviour
     public void StartHost()
     {
         Relay.CreateRelay();
+        foreach (Transform t in transform)
+        {
+            t.gameObject.SetActive(false);
+        }
         RoomCode.gameObject.SetActive(true);
     }
 
     public void StartClient()
     {
         Relay.JoinRelay(CodeInput.text);
+        gameObject.SetActive(false);
     }
 
     // Start is called before the first frame update

@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using TMPro;
 
 public class PlayerNetwork : NetworkBehaviour
 {
     public PlayerMovement Movement;
+    public Camera Camera;
+
+    public TMP_Text Nametag;
 
     public List<MeshRenderer> Meshes = new();
 
     public override void OnNetworkSpawn()
     {
+        if (Nametag) Nametag.text = "Player #" + OwnerClientId.ToString();
         if (IsOwner)
         {
+            Game.Player = this;
             foreach (MeshRenderer mesh in Meshes)
             {
                 mesh.enabled = false;
@@ -21,6 +27,20 @@ public class PlayerNetwork : NetworkBehaviour
         else
         {
             Destroy(Movement);
+            
+            Material[] mats = new Material[1];
+            mats[0] = Game.Manager.PlayerMats[(int)OwnerClientId];
+            Meshes[0].gameObject.GetComponent<MeshRenderer>().materials = mats;
+            /*foreach (MeshRenderer mesh in Meshes)
+            {
+                print(mesh.gameObject.GetComponent<MeshRenderer>().materials[0]);
+                print(Game.Manager.PlayerMats[(int)OwnerClientId]);
+                Material[] mats = new Material[1];
+                mats[0] = Game.Manager.PlayerMats[(int)OwnerClientId];
+                mesh.gameObject.GetComponent<MeshRenderer>().materials = mats;
+                //mesh.gameObject.GetComponent<MeshRenderer>().materials[0] = Game.Manager.PlayerMats[(int)OwnerClientId];
+                //mesh.gameObject.GetComponent<MeshRenderer>().SetMaterials(mats);
+            }*/
         }
     }
 
