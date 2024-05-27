@@ -14,6 +14,6 @@ public class AlignToCamera : MonoBehaviour
     void LateUpdate()
     {
         //transform.LookAt(Game.Player.transform);
-        transform.rotation = Game.Player.Camera.transform.rotation;
+        if (Game.Player) transform.rotation = Game.Player.Camera.transform.rotation;
     }
 }

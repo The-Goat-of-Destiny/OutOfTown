@@ -61,6 +61,8 @@ public class TestRelay : MonoBehaviour
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
             NetworkManager.Singleton.StartClient();
+
+            // ServerRPC to host with Player Data (should also receive all current playerData as well)
         }
         catch (RelayServiceException e)
         {

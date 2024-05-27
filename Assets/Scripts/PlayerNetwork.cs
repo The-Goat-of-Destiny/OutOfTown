@@ -27,21 +27,11 @@ public class PlayerNetwork : NetworkBehaviour
         else
         {
             Destroy(Movement);
-            
-            Material[] mats = new Material[1];
-            mats[0] = Game.Manager.PlayerMats[(int)OwnerClientId];
-            Meshes[0].gameObject.GetComponent<MeshRenderer>().materials = mats;
-            /*foreach (MeshRenderer mesh in Meshes)
-            {
-                print(mesh.gameObject.GetComponent<MeshRenderer>().materials[0]);
-                print(Game.Manager.PlayerMats[(int)OwnerClientId]);
-                Material[] mats = new Material[1];
-                mats[0] = Game.Manager.PlayerMats[(int)OwnerClientId];
-                mesh.gameObject.GetComponent<MeshRenderer>().materials = mats;
-                //mesh.gameObject.GetComponent<MeshRenderer>().materials[0] = Game.Manager.PlayerMats[(int)OwnerClientId];
-                //mesh.gameObject.GetComponent<MeshRenderer>().SetMaterials(mats);
-            }*/
         }
+
+        Material[] mats = new Material[1];
+        mats[0] = Game.Manager.PlayerMats[(int)OwnerClientId];
+        Meshes[0].gameObject.GetComponent<MeshRenderer>().materials = mats;
     }
 
     //private NetworkVariable<int> randomNumber = new(1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
