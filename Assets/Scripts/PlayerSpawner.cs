@@ -10,36 +10,19 @@ public class PlayerSpawner : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
-        //NetworkManager.Singleton.SpawnManager.InstantiateAndSpawn(PlayerPrefab, NetworkManager.Singleton.LocalClientId)
-        //SpawnPlayerServerRpc(NetworkManager.Singleton.LocalClientId);
         SpawnPlayersServerRpc();
-        //Instantiate(PlayerPrefab, transform.position, transform.rotation).GetComponent<NetworkObject>().SpawnAsPlayerObject(NetworkManager.Singleton.LocalClientId);
     }
 
     // Start is called before the first frame update
     void Start()
     {
         
-        //print("IsOwner: " + IsServer.ToString());
-        //GetComponent<NetworkObject>().Spawn();// SpawnWithOwnership(NetworkManager.Singleton.LocalClientId);
-        //if (IsServer) SpawnPlayersServerRpc();
-        //SetupPlayerSpawnerServerRpc();
-        //GetComponent<NetworkObject>().SpawnWithOwnership(NetworkManager.Singleton.LocalClientId);
-        //GetComponent<NetworkObject>().Spawn();
-        //Instantiate(PlayerPrefab, transform.position, transform.rotation).GetComponent<NetworkObject>().SpawnAsPlayerObject(NetworkManager.Singleton.LocalClientId);
     }
 
-    [ServerRpc]
-    void SpawnPlayerServerRpc(ulong clientId)
-    {
-        Instantiate(PlayerPrefab, transform.position, transform.rotation).GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId);
-    }
-
-
-
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     void SpawnPlayersServerRpc()
     {
+        if (!IsServer) return;
         foreach (ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)
         {
             print("Spawning client " + clientId.ToString());

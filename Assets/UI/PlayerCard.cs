@@ -17,11 +17,12 @@ public class PlayerCard : MonoBehaviour
         
     }
 
-    public void UpdateVisuals()
+    public void UpdateVisuals(string clientUsername)
     {
-        if (Game.ConnectedPlayers.Count > userIndex)
+        if (NetworkManager.Singleton.ConnectedClientsIds.Count > userIndex)
         {
-            Username.text = Game.ConnectedPlayers[userIndex].Username;
+            Username.text = clientUsername;
+            //Username.text = Game.ConnectedPlayers[userIndex].Username;
             gameObject.SetActive(true);
         }
         else

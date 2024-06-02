@@ -539,6 +539,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Card (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3867065255950804486, guid: d8caf90b5c48d184daf799d638155013, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7233617647027531060, guid: d8caf90b5c48d184daf799d638155013, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -783,6 +787,10 @@ PrefabInstance:
     - target: {fileID: 3867065255950804486, guid: d8caf90b5c48d184daf799d638155013, type: 3}
       propertyPath: m_Name
       value: Player Card (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3867065255950804486, guid: d8caf90b5c48d184daf799d638155013, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7233617647027531060, guid: d8caf90b5c48d184daf799d638155013, type: 3}
       propertyPath: m_Pivot.x
@@ -1518,7 +1526,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 1
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -1561,6 +1569,7 @@ MonoBehaviour:
   Relay: {fileID: 1118717875}
   RoomCode: {fileID: 1833665484}
   CodeInput: {fileID: 1825385842}
+  ConnectedPlayerList: {fileID: 1338208102}
 --- !u!114 &1072979725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2191,6 +2200,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Card
       objectReference: {fileID: 0}
+    - target: {fileID: 3867065255950804486, guid: d8caf90b5c48d184daf799d638155013, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6178535415176399080, guid: d8caf90b5c48d184daf799d638155013, type: 3}
       propertyPath: m_Type
       value: 0
@@ -2438,6 +2451,10 @@ PrefabInstance:
     - target: {fileID: 3867065255950804486, guid: d8caf90b5c48d184daf799d638155013, type: 3}
       propertyPath: m_Name
       value: Player Card (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3867065255950804486, guid: d8caf90b5c48d184daf799d638155013, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7233617647027531060, guid: d8caf90b5c48d184daf799d638155013, type: 3}
       propertyPath: m_Pivot.x

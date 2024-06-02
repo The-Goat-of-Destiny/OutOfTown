@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 using TMPro;
+using System.Threading.Tasks;
 
 public class PlayerNetwork : NetworkBehaviour
 {
@@ -15,7 +16,7 @@ public class PlayerNetwork : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
-        if (Nametag) Nametag.text = "Player #" + OwnerClientId.ToString();
+        if (Nametag) Nametag.text = "Player #" + OwnerClientId.ToString();// TODO: Replace with Username
         if (IsOwner)
         {
             Game.Player = this;
@@ -28,9 +29,13 @@ public class PlayerNetwork : NetworkBehaviour
         {
             Destroy(Movement);
         }
+    }
 
+    void Start()
+    {
         Material[] mats = new Material[1];
         mats[0] = Game.Manager.PlayerMats[(int)OwnerClientId];
+
         Meshes[0].gameObject.GetComponent<MeshRenderer>().materials = mats;
     }
 
@@ -52,8 +57,16 @@ public class PlayerNetwork : NetworkBehaviour
 
         if (Input.GetButtonDown("Cancel"))
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            if (Cursor.visible)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
         }
 
         /*if (Input.GetKeyDown(KeyCode.T))

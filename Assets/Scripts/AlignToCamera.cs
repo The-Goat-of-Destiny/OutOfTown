@@ -13,7 +13,6 @@ public class AlignToCamera : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        //transform.LookAt(Game.Player.transform);
         if (Game.Player) transform.rotation = Game.Player.Camera.transform.rotation;
     }
 }
