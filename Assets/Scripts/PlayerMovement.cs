@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float Gravity = 10f;
     [SerializeField] private float JumpSpeed = 10f;
 
-    private Vector3 Velocity;
+    public Vector3 Velocity;
 
     // Start is called before the first frame update
     void Start()
