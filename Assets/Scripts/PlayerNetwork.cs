@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 public class PlayerNetwork : NetworkBehaviour
 {
     public PlayerMovement Movement;
+    public PlayerInventory Inventory;
     public Camera Camera;
 
     public TMP_Text Nametag;
